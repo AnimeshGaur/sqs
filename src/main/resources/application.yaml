@@ -1,0 +1,14 @@
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration
+      - org.springframework.cloud.aws.autoconfigure.context.ContextStackAutoConfiguration
+      - org.springframework.cloud.aws.autoconfigure.context.ContextRegionProviderAutoConfiguration
+
+cloud:
+  aws:
+    region:
+      static: ap-south-1
+      auto: false
+    end-point:
+      uri: https://sqs.ap-south-1.amazonaws.com/325325683952/PRIMARY_SCORING
