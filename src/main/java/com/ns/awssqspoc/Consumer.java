@@ -22,7 +22,6 @@ public class Consumer {
     private String endPoint ="https://sqs.ap-south-1.amazonaws.com/325325683952/PRIMARY_SCORING";
 
 
-    @Async
     @SqsListener(value = "https://sqs.ap-south-1.amazonaws.com/325325683952/PRIMARY_SCORING", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
     public void receiveMessage(String stringJson) {
 
