@@ -26,7 +26,7 @@ public class Consumer {
     @SqsListener(value = "https://sqs.ap-south-1.amazonaws.com/325325683952/PRIMARY_SCORING", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
     public void receiveMessage(String stringJson) {
 
-        log.error("Message Received using SQS Listner " + stringJson);
+        log.error("Message Received using SQS Listner " + stringJson + " time = " +System.currentTimeMillis());
 
     }
 }

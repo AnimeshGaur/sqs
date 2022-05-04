@@ -17,10 +17,10 @@ public class Publisher {
     @Value("${cloud.aws.end-point.uri}")
     private String endpoint;
 
-//    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 10000)
     public void scheduleFixedRateTask() {
         log.info("Sending Message to SQS ");
-        queueMessagingTemplate.convertAndSend(endpoint, new Pojo("SomeRandomValue"));
+        queueMessagingTemplate.convertAndSend(endpoint, new Pojo("Hello +" + System.currentTimeMillis()));
 
     }
 }
