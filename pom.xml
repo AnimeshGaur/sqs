@@ -67,7 +67,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
 				<configuration>
-					<fork>true</fork>
+						<source>1.8</source>
+						<target>1.8</target>
 					<executable>/usr/lib/jvm/java-1.8.0-amazon-corretto.x86_64/bin/javac</executable>
 				</configuration>
 			</plugin>
