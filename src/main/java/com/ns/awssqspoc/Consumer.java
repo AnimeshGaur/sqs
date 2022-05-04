@@ -8,6 +8,7 @@ import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate;
 import org.springframework.cloud.aws.messaging.listener.SqsMessageDeletionPolicy;
 import org.springframework.cloud.aws.messaging.listener.annotation.SqsListener;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,13 +17,16 @@ public class Consumer {
     @Autowired
     private QueueMessagingTemplate queueMessagingTemplate;
 
-    @Value("${cloud.aws.end-point.uri}")
-    private String endpoint;
+    //@Value("${cloud.aws.end-point.uri}")
+    private String endPoint ="https://sqs.ap-south-1.amazonaws.com/325325683952/PRIMARY_SCORING";
 
-    @MessageMapping("https://sqs.ap-south-1.amazonaws.com/325325683952/PRIMARY_SCORING")
-    @SqsListener(value = "https://sqs.ap-south-1.amazonaws.com/325325683952/PRIMARY_SCORING",deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
-    public void processMessage(String message) {
-        log.info("Message from SQS {}", message);
-        log.info( queueMessagingTemplate.receiveAndConvert(Pojo.class).toString());
+
+    @Async
+    @SqsListener(value = "https://sqs.ap-south-1.amazonaws.com/325325683952/PRIMARY_SCORING", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
+    public void receiveMessage(String stringJson) {
+
+        String message = queueMessagingTemplate.receiveAndConvert(String.class);
+        log.error("Message Received using SQS Listner " + stringJson + " message " + message);
+
     }
 }
