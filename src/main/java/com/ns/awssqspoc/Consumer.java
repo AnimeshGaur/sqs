@@ -26,8 +26,7 @@ public class Consumer {
     @SqsListener(value = "https://sqs.ap-south-1.amazonaws.com/325325683952/PRIMARY_SCORING", deletionPolicy = SqsMessageDeletionPolicy.ON_SUCCESS)
     public void receiveMessage(String stringJson) {
 
-        Message<?> message = queueMessagingTemplate.receive("PRIMARY_SCORING");
-        log.error("Message Received using SQS Listner " + message.getPayload());
+        log.error("Message Received using SQS Listner " + stringJson);
 
     }
 }
