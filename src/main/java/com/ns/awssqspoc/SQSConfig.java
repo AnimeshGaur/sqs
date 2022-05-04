@@ -45,7 +45,7 @@ public class SQSConfig {
         SimpleMessageListenerContainerFactory factory = new SimpleMessageListenerContainerFactory();
         factory.setAmazonSqs(amazonSqs);
         factory.setAutoStartup(true);
-        factory.setMaxNumberOfMessages(10);
+        factory.setMaxNumberOfMessages(100);
         factory.setWaitTimeOut(10);
         factory.setBackOffTime(Long.valueOf(60000));
         return factory;
